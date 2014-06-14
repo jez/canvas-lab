@@ -20,4 +20,13 @@ patriclesNum = 500,
     canvas.style.top = (window.innerHeight - h) / 2 + 'px';
   }
 
+  // Set random coordinates, sizes, colors, and velocites.
+  function Factory() {  
+    this.x =  Math.round( Math.random() * w);
+    this.y =  Math.round( Math.random() * h);
+    this.rad = Math.round( Math.random() * 1) + 1;
+    this.rgba = colors[ Math.round( Math.random() * 3) ];
+    this.vx = Math.round( Math.random() * 3) - 1.5;
+    this.vy = Math.round( Math.random() * 3) - 1.5;
+  }
 })();
