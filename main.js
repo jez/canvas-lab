@@ -50,6 +50,18 @@ patriclesNum = 500,
         var temp2 = particles[j];
         ctx.linewidth = 0.5;
 
+        // Only connect somewhat adjacent dots of the same color
+        if(temp.rgba == temp2.rgba && findDistance(temp, temp2) < 50) {
+          // Syntax is like actually taking a brush to a canvas!
+          ctx.strokeStyle = temp.rgba;
+          ctx.beginPath();
+          ctx.moveTo(temp.x, temp.y);
+          ctx.lineTo(temp2.x, temp2.y);
+          ctx.stroke();
+          // Keep track of the number of lines we draw: we'll make this 
+          // particle's size bigger depending on how many it's connected to
+          factor++;
+        }
       }
 
     }
