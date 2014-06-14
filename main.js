@@ -29,4 +29,29 @@ patriclesNum = 500,
     this.vx = Math.round( Math.random() * 3) - 1.5;
     this.vy = Math.round( Math.random() * 3) - 1.5;
   }
+
+  // Redraw the playing field--er... canvas.
+  function draw() {
+    // DELETE EVERYTHING
+    ctx.clearRect(0, 0, w, h);
+
+    // See https://developer.mozilla.org/samples/canvas-tutorial/6_1_canvas_composite.html
+    // Basically, make the overlays nice.
+    ctx.globalCompositeOperation = 'lighter';
+
+    // Loop over all the particles twice to draw lines between two particles
+    for(var i = 0;i < patriclesNum; i++){
+      // First particle
+      var temp = particles[i];
+      var factor = 1;
+
+      for(var j = 0; j<patriclesNum; j++){
+        // Second particle
+        var temp2 = particles[j];
+        ctx.linewidth = 0.5;
+
+      }
+
+    }
+  }
 })();
