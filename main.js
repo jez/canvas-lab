@@ -78,6 +78,16 @@ patriclesNum = 500,
       ctx.arc(temp.x, temp.y, (temp.rad+5)*factor, 0, Math.PI*2, true);
       ctx.stroke();
       ctx.closePath();
+
+      // Move this particle forward by it's current velocity
+      temp.x += temp.vx;
+      temp.y += temp.vy;
+
+      // If this particle is at the edge, make it wrap around to the other side
+      if(temp.x > w) temp.x = 0;
+      if(temp.x < 0) temp.x = w;
+      if(temp.y > h) temp.y = 0;
+      if(temp.y < 0) temp.y = h;
     }
   }
 })();
