@@ -90,4 +90,37 @@ patriclesNum = 500,
       if(temp.y < 0) temp.y = h;
     }
   }
+
+  // Helper function for calculating distances
+  function findDistance(p1, p2) {  
+    return Math.sqrt( Math.pow(p2.x - p1.x, 2) + Math.pow(p2.y - p1.y, 2)  );
+  }
+
+  // Define the function that redraws the frame periodically
+  // Because this function will vary from browser to browser, we have to find
+  // which one of the following works for us
+  //
+  // When we actually find which one works, what basically happens is that we
+  // are asking the browser to call our function before redrawing the screen.
+  window.requestAnimFrame = (function(){
+    return  window.requestAnimationFrame       ||
+    window.webkitRequestAnimationFrame ||
+    window.mozRequestAnimationFrame    ||
+    function( callback  ){
+      window.setTimeout(callback, 1000 / 60);
+    };
+  })();
+
+  // Make all the initial dots, store them in the particles array
+  (function init(){
+    for(var i = 0; i < patriclesNum; i++){
+      particles.push(new Factory);
+    }
+  })();
+
+  // Draw the initial frame and then loop using our redraw function
+  (function loop(){
+    draw();
+    requestAnimFrame(loop);
+  })();
 })();
