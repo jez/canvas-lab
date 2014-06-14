@@ -64,6 +64,20 @@ patriclesNum = 500,
         }
       }
 
+      ctx.fillStyle = temp.rgba;
+      ctx.strokeStyle = temp.rgba;
+
+      // Draw dot representing this particle
+      ctx.beginPath();
+      ctx.arc(temp.x, temp.y, temp.rad*factor, 0, Math.PI*2, true);
+      ctx.fill();
+      ctx.closePath();
+
+      // Draw circle around this dot, larger than the dot
+      ctx.beginPath();
+      ctx.arc(temp.x, temp.y, (temp.rad+5)*factor, 0, Math.PI*2, true);
+      ctx.stroke();
+      ctx.closePath();
     }
   }
 })();
